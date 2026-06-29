@@ -169,3 +169,9 @@ uploads/*
 !uploads/.gitkeep
 temp/
 tmp/
+
+# Large Datasets and Archives
+Pepper_Dataset/
+*.zip
+*.rar
+
