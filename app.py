@@ -93,7 +93,13 @@ def predict():
         predictions = net.predict(img_array)
         pred_probs = predictions[0]
         pred_idx = int(np.argmax(pred_probs))
-        confidence = float(pred_probs[pred_idx])
+        raw_confidence = float(pred_probs[pred_idx])
+
+        # Normalkan confidence score agar tidak mencapai 100%
+        if raw_confidence > 0.85:
+            confidence = 0.85 + (raw_confidence - 0.85) * 0.85
+        else:
+            confidence = raw_confidence
 
         class_name = CLASS_NAMES[pred_idx]
         
